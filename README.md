@@ -4,7 +4,7 @@
 **Course**: CST8917 - Serverless Applications
 **Date**: August 14 2026
 
-# Version A Summary
+## Version A Summary
 
 Version A uses **Azure Durable Functions**. An HTTP function receives the expense and starts the workflow. The orchestrator checks the amount, validates the request, and handles approval.
 
@@ -20,7 +20,7 @@ The main challenges were **VS Code Restricted Mode** hiding the testing buttons 
 
 ---
 
-# Version B Summary
+## Version B Summary
 
 Version B uses **Logic Apps and Service Bus**. I successfully deployed the queue, topic, and three filtered subscriptions. A separate Azure Function handles validation using the same rules as Version A.
 
