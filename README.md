@@ -29,7 +29,7 @@ The main challenge is that I hit an error I couldn't resolve in time when callin
 
 ## Comparison Analysis 
 
-## Development Experience
+### Development Experience
 
 Version A was much faster and more predictable to build than Version B. The Durable Functions orchestrator, activities, and HTTP endpoints were all in one `function_app.py` file, and errors were easy to diagnose. For example, when the manager-approval event failed with `'str' object has no attribute 'get'`, the terminal showed a full Python traceback pointing directly to the problem. I fixed it by handling the event payload when it arrived as a JSON string instead of a dictionary. The fix took less than five minutes.
 
@@ -37,7 +37,7 @@ Version B was more difficult, especially when working with the Logic App itself.
 
 The most frustrating issue was that replacing the entire workflow through code view could remove the *value* portion of existing connection references. This meant actions that had worked in the designer could stop working after a code-view replacement. Eventually, rebuilding the workflow through the Logic App designer proved much more reliable. This was surprising, because I expected the visual/declarative platform to be easier to work with than the code-first approach.
 
-## Testability
+### Testability
 
 Version A had a major advantage in testing. The entire workflow could be tested locally without an Azure subscription. Azurite provided local storage, `func start` ran the orchestration, and `test-durable.http` tested all six required scenarios. Even the timeout scenario could be tested locally by using a shortened one-minute timer.
 
@@ -45,7 +45,7 @@ Version B did not have the same local testing capability. There is no local emul
 
 This creates a real difference between the approaches. With Durable Functions, I could make changes and test the complete workflow repeatedly on my laptop. With Logic Apps, many problems could only be discovered after deploying to Azure.
 
-## Error Handling
+### Error Handling
 
 Durable Functions provided clearer error messages. When something failed, the Python exception and full stack trace showed exactly where the problem occurred. This made debugging much faster.
 
@@ -53,7 +53,7 @@ Logic Apps provided useful built-in features such as retry policies and the `Htt
 
 Errors such as *"The API connection name must be provided in the action inputs"* were technically correct but not very helpful. During the project, similar messages were caused by different problems, including missing connection values, stale designer state, and connection references being reset during code-view replacement. As a result, troubleshooting often required trial and error rather than following a clear error message.
 
-## Human Interaction Pattern
+### Human Interaction Pattern
 
 This is the area where Durable Functions was clearly better suited to the assignment.
 
@@ -63,15 +63,14 @@ Logic Apps does not have an equivalent built-in human-approval waiting pattern i
 
 This solution works and is documented in `DESIGN-NOTES.md`, but it required building an additional component that Durable Functions provided as part of the orchestration model. That represents a meaningful difference in development effort.
 
-## Observability
+### Observability
 
 Durable Functions provided simple and useful observability through `statusQueryGetUri`. It returned the orchestration status, input, and output as structured JSON, which made it easy to verify all six test scenarios.
 
 Logic Apps has a strong visual run-history experience. Its condition branches and individual action results can be easier for non-developers to understand. However, because Version B never reached the same level of stable execution, I could not take full advantage of those features. This was also an important lesson: good observability is only useful once the workflow is running reliably.
 
-## Cost
+### Cost
 
-*Assumptions: Consumption/serverless pricing in Canada Central, ~10 Logic App actions per expense, ~6 Durable Functions executions per run, and a Service Bus Standard tier costing about $10/month.*
 
 At **100 expenses/day** (~3,000/month), Durable Functions would remain almost entirely within the monthly free grant of 1 million executions and 400,000 GB-seconds. Its cost would therefore be close to **$0**, apart from a small amount for storage.
 
