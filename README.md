@@ -18,7 +18,6 @@ For testing, the timeout was set to 1 minute instead of the 24 hours we would us
 
 The main challenges were **VS Code Restricted Mode** hiding the testing buttons and the manager's response sometimes arriving as a string instead of an object. Both were fixed, and **all six required test scenarios passed**.
 
----
 
 ## Version B Summary
 
