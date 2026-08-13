@@ -1,0 +1,47 @@
+### Version B - direct tests against the validation Azure Function
+### These only exercise validate_expense's logic in isolation (scenarios
+### 5 and 6, plus a sanity check on 1). For the full end-to-end pipeline
+### (auto-approve, manager approval/rejection, timeout/escalation), use
+### send_test_messages.py to put messages on the Service Bus queue and
+### watch the Logic App run history in the Azure portal instead — Service
+### Bus queues aren't reachable directly over HTTP.
+
+@baseUrl = http://localhost:7071/api
+@functionKey = REPLACE_WITH_LOCAL_FUNCTION_KEY_IF_NEEDED
+
+### Scenario 1 sanity check: valid expense -> {"valid": true, "reason": null}
+POST {{baseUrl}}/validate
+Content-Type: application/json
+
+{
+  "employee_name": "Alice Chen",
+  "employee_email": "alice@example.com",
+  "amount": 45.50,
+  "category": "supplies",
+  "description": "Notebooks and pens",
+  "manager_email": "manager@example.com"
+}
+
+### Scenario 5: missing required fields -> {"valid": false, "reason": "Missing required field(s): employee_email, manager_email"}
+POST {{baseUrl}}/validate
+Content-Type: application/json
+
+{
+  "employee_name": "Erin Wu",
+  "amount": 60,
+  "category": "meals",
+  "description": "Team lunch"
+}
+
+### Scenario 6: invalid category -> {"valid": false, "reason": "Invalid category '...'..."}
+POST {{baseUrl}}/validate
+Content-Type: application/json
+
+{
+  "employee_name": "Frank Lopez",
+  "employee_email": "frank@example.com",
+  "amount": 120,
+  "category": "entertainment",
+  "description": "Client dinner",
+  "manager_email": "manager@example.com"
+}
