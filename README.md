@@ -27,3 +27,5 @@ The Logic App was built in the **visual designer**. It receives the message, par
 
 The main challenge is that I hit an error I couldn't resolve in time when calling the validation function. The Logic App returned an InvalidProtocolResponse error related to the upload request.
 
+## Comparison Analysis 
+
