@@ -25,3 +25,5 @@ Version B uses **Logic Apps and Service Bus**. I successfully deployed the queue
 
 The Logic App was built in the **visual designer**. It receives the message, parses it, calls the validation function, and then decides what to do based on the expense amount.
 
+The main challenge is that I hit an error I couldn't resolve in time when calling the validation function. The Logic App returned an InvalidProtocolResponse error related to the upload request.
+
