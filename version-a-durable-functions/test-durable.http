@@ -1,0 +1,138 @@
+### Version A - Durable Functions test scenarios
+### Run with the VS Code "REST Client" extension. Start the function host first:
+###   func start
+### Named requests (# @name) let later requests reference earlier responses,
+### e.g. to poll status or grab an instanceId without copy/pasting manually.
+
+@baseUrl = http://localhost:7071/api
+
+### -----------------------------------------------------------------------
+### Scenario 1: Valid expense under $100 -> Auto-approved
+### -----------------------------------------------------------------------
+# @name scenario1
+POST {{baseUrl}}/expenses
+Content-Type: application/json
+
+{
+  "employee_name": "Alice Chen",
+  "employee_email": "alice@example.com",
+  "amount": 45.50,
+  "category": "supplies",
+  "description": "Notebooks and pens",
+  "manager_email": "manager@example.com"
+}
+
+### Poll status (wait a second, then run this - should show "approved")
+GET {{scenario1.response.body.statusQueryGetUri}}
+
+### -----------------------------------------------------------------------
+### Scenario 2: Valid expense >= $100, manager approves -> Approved
+### -----------------------------------------------------------------------
+# @name scenario2
+POST {{baseUrl}}/expenses
+Content-Type: application/json
+
+{
+  "employee_name": "Bob Singh",
+  "employee_email": "bob@example.com",
+  "amount": 350,
+  "category": "travel",
+  "description": "Flight to conference",
+  "manager_email": "manager@example.com"
+}
+
+### Copy the instanceId from the scenario2 response below, then submit the
+### manager's approval before the timer expires (default timeout: 1 minute)
+POST {{baseUrl}}/expenses/{{scenario2.response.body.id}}/decision
+Content-Type: application/json
+
+{
+  "approved": true
+}
+
+### Poll status - should show "approved"
+GET {{scenario2.response.body.statusQueryGetUri}}
+
+### -----------------------------------------------------------------------
+### Scenario 3: Valid expense >= $100, manager rejects -> Rejected
+### -----------------------------------------------------------------------
+# @name scenario3
+POST {{baseUrl}}/expenses
+Content-Type: application/json
+
+{
+  "employee_name": "Carla Diaz",
+  "employee_email": "carla@example.com",
+  "amount": 899.99,
+  "category": "equipment",
+  "description": "Replacement laptop",
+  "manager_email": "manager@example.com"
+}
+
+###
+POST {{baseUrl}}/expenses/{{scenario3.response.body.id}}/decision
+Content-Type: application/json
+
+{
+  "approved": false,
+  "comment": "Please use the standard equipment refresh process instead"
+}
+
+### Poll status - should show "rejected"
+GET {{scenario3.response.body.statusQueryGetUri}}
+
+### -----------------------------------------------------------------------
+### Scenario 4: Valid expense >= $100, no manager response -> Escalated
+### -----------------------------------------------------------------------
+# @name scenario4
+POST {{baseUrl}}/expenses
+Content-Type: application/json
+
+{
+  "employee_name": "Dev Patel",
+  "employee_email": "dev@example.com",
+  "amount": 500,
+  "category": "software",
+  "description": "Annual IDE license",
+  "manager_email": "manager@example.com"
+}
+
+### Do NOT submit a decision. Wait past MANAGER_TIMEOUT_MINUTES
+### (1 minute by default), then poll - should show "escalated"
+GET {{scenario4.response.body.statusQueryGetUri}}
+
+### -----------------------------------------------------------------------
+### Scenario 5: Missing required fields -> Validation error
+### -----------------------------------------------------------------------
+# @name scenario5
+POST {{baseUrl}}/expenses
+Content-Type: application/json
+
+{
+  "employee_name": "Erin Wu",
+  "amount": 60,
+  "category": "meals",
+  "description": "Team lunch"
+}
+
+### Poll status - should show "validation_error" (missing employee_email, manager_email)
+GET {{scenario5.response.body.statusQueryGetUri}}
+
+### -----------------------------------------------------------------------
+### Scenario 6: Invalid category -> Validation error
+### -----------------------------------------------------------------------
+# @name scenario6
+POST {{baseUrl}}/expenses
+Content-Type: application/json
+
+{
+  "employee_name": "Frank Lopez",
+  "employee_email": "frank@example.com",
+  "amount": 120,
+  "category": "entertainment",
+  "description": "Client dinner",
+  "manager_email": "manager@example.com"
+}
+
+### Poll status - should show "validation_error" (invalid category)
+GET {{scenario6.response.body.statusQueryGetUri}}
