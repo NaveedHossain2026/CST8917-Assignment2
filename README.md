@@ -26,21 +26,3 @@ Version B uses **Logic Apps and Service Bus**. I successfully deployed the queue
 
 The Logic App was built in the **visual designer**. It receives the message, parses it, calls the validation function, and then decides what to do based on the expense amount.
 
-## Manager Approval
-
-For manager approval, I used an **HTTP Webhook**. It pauses the workflow and creates a callback link. A second function sends the manager approve/reject links, and clicking one resumes the workflow.
-
-I chose this instead of polling or Microsoft's approval connector because it responds immediately and isn't tied to a specific email provider.
-
-## Challenges
-
-This version was more difficult to build. I ran into:
-
-- Bicep errors
-- Function routing issues
-- Connection-linking problems
-- A final chunked-upload error when calling the validation function
-
-I found that using the **visual designer** worked much better than manually editing the JSON.
-
-The full workflow was built and saved, but I couldn't resolve the final chunked-upload error in the time available. The manager-approval function was tested separately and works correctly.
