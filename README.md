@@ -64,9 +64,11 @@ Logic Apps does not have an equivalent built-in human-approval waiting pattern i
 
 ### Observability
 
-Durable Functions provided simple and useful observability through `statusQueryGetUri`. It returned the orchestration status, input, and output as structured JSON, which made it easy to verify all six test scenarios.
+Durable Functions provided simple and useful monitoring through statusQueryGetUri. It showed the orchestration status, input, and output as JSON, which made it easy to check all six test scenarios.
 
-Logic Apps has a strong visual run-history experience. Its condition branches and individual action results can be easier for non-developers to understand. However, because Version B never reached the same level of stable execution, I could not take full advantage of those features. This was also an important lesson: good observability is only useful once the workflow is running reliably.
+Logic Apps has a better visual monitoring experience. Its Run History shows each step, condition, and result, making it easier to understand the workflow.
+
+However, Version B was not as stable, so I could not fully use these monitoring features. This taught me that good monitoring is only helpful when the workflow is working reliably.
 
 ### Cost
 
