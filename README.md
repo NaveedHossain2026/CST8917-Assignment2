@@ -47,11 +47,11 @@ This creates a real difference between the approaches. With Durable Functions, I
 
 ### Error Handling
 
-Durable Functions provided clearer error messages. When something failed, the Python exception and full stack trace showed exactly where the problem occurred. This made debugging much faster.
+Durable Functions gave me more control over errors. I could use Python to handle exceptions and configure retries. When something failed, I could see the error directly in the terminal, which made debugging easier.
 
-Logic Apps provided useful built-in features such as retry policies and the `HttpWebhook` action's `TimedOut` status, which made timeout handling relatively clean once everything was configured correctly. However, getting the workflow configured correctly was the difficult part.
+Logic Apps also has built-in error handling, such as retries and conditions for what to do when an action fails. However, I found it harder to troubleshoot because a failure could come from the Logic App, Service Bus, Azure Function, or HTTP connection.
 
-Errors such as *"The API connection name must be provided in the action inputs"* were technically correct but not very helpful. During the project, similar messages were caused by different problems, including missing connection values, stale designer state, and connection references being reset during code-view replacement. As a result, troubleshooting often required trial and error rather than following a clear error message.
+Overall, I preferred Durable Functions for error handling because it gave me more control and made it easier to find and fix problems. Logic Apps was easier for basic retry and failure handling because much of it could be configured visually.
 
 ### Human Interaction Pattern
 
