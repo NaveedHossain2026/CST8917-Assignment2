@@ -31,7 +31,7 @@ The main challenge is that I hit an error I couldn't resolve in time when callin
 
 ### Development Experience
 
-Durable Functions was faster and easier for me to build. The workflow logic was written in Python, so I could see and control the entire process in one place. When errors happened, the terminal showed clear error messages that helped me fix them quickly.
+Version A was much faster and more predictable to build than Version B. The Durable Functions orchestrator, activities, and HTTP endpoints were all in one function_app.py file, and errors were easy to diagnose. For example, when the manager-approval event failed with 'str' object has no attribute 'get', the terminal showed a full Python traceback pointing directly to the problem. I fixed it by handling the event payload when it arrived as a JSON string instead of a dictionary. The fix took less than five minutes.
 
 Logic Apps took more time to build and troubleshoot. Although the visual designer looked easier at first, connecting the different services and configuring the workflow was more complicated. I also had more difficulty diagnosing errors.
 
