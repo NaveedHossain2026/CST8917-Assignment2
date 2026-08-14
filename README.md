@@ -43,7 +43,7 @@ Version A had a major advantage in testing. The entire workflow could be tested 
 
 Version B did not have the same local testing capability. There is no local emulator for Logic Apps or Service Bus, so only the two standalone Azure Functions could be tested locally. The actual Logic App workflow, branching, and Service Bus communication had to be tested using live Azure resources.
 
-This creates a real difference between the approaches. With Durable Functions, I could make changes and test the complete workflow repeatedly on my laptop. With Logic Apps, many problems could only be discovered after deploying to Azure.
+This creates a real difference between the approaches. With Durable Functions, I could make changes and test the complete workflow repeatedly on my computer. With Logic Apps, many problems could only be discovered after deploying to Azure.
 
 ### Error Handling
 
