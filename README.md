@@ -87,7 +87,7 @@ At **10,000 expenses/day** (~300,000/month), the difference becomes much larger.
 
 Therefore, at higher volumes, Durable Functions is significantly more cost-effective for this workflow.
 
-### Recommendation
+## Recommendation
 
 For a production version of this expense approval workflow, I would choose Azure Durable Functions. The workflow has several steps, such as validation, automatic approval, manager approval, waiting for a response, handling timeouts, and sending notifications. Durable Functions is a good fit because it can pause and resume the workflow while keeping its state. The manager approval and timeout were also easier to implement with Durable Functions.
 
