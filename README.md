@@ -86,3 +86,13 @@ At **10,000 expenses/day** (~300,000/month), the difference becomes much larger.
 | **Logic Apps + Service Bus** | ~$11/mo | ~$100/mo |
 
 Therefore, at higher volumes, Durable Functions is significantly more cost-effective for this workflow.
+
+### Recommendation
+
+For a production version of this expense approval workflow, I would choose Azure Durable Functions. The workflow has several steps, such as validation, automatic approval, manager approval, waiting for a response, handling timeouts, and sending notifications. Durable Functions is a good fit because it can pause and resume the workflow while keeping its state. The manager approval and timeout were also easier to implement with Durable Functions.
+
+I also found Durable Functions easier to develop and debug. Since the workflow was written in Python, I had more control over the logic. When an error happened, the Python traceback helped me quickly find the problem. The statusQueryGetUri also made it easy to check the workflow status and results.
+
+I would choose Logic Apps when the main goal is connecting different services and creating workflows visually. Its Run History makes it easy to see what happened at each step, and its built-in connectors can reduce the amount of code needed.
+
+Overall, I would choose Durable Functions for this workflow because it provides more control, easier debugging, and better support for manager approval and timeouts. I would choose Logic Apps when visual design, easy service integration, and monitoring are more important than having detailed control over the code.
