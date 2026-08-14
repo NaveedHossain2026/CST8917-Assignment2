@@ -31,11 +31,11 @@ The main challenge is that I hit an error I couldn't resolve in time when callin
 
 ### Development Experience
 
-Version A was much faster and more predictable to build than Version B. The Durable Functions orchestrator, activities, and HTTP endpoints were all in one `function_app.py` file, and errors were easy to diagnose. For example, when the manager-approval event failed with `'str' object has no attribute 'get'`, the terminal showed a full Python traceback pointing directly to the problem. I fixed it by handling the event payload when it arrived as a JSON string instead of a dictionary. The fix took less than five minutes.
+Durable Functions was faster and easier for me to build. The workflow logic was written in Python, so I could see and control the entire process in one place. When errors happened, the terminal showed clear error messages that helped me fix them quickly.
 
-Version B was more difficult, especially when working with the Logic App itself. The Service Bus infrastructure and Azure Functions deployed successfully using Bicep and `func azure functionapp publish`. However, manually creating the Logic App as raw JSON caused several problems, including Bicep quoting errors, Azure Functions connector restrictions, `$connections` schema mismatches, and differences between the JSON expected by the code view and the actual workflow definition.
+Logic Apps took more time to build and troubleshoot. Although the visual designer looked easier at first, connecting the different services and configuring the workflow was more complicated. I also had more difficulty diagnosing errors.
 
-The most frustrating issue was that replacing the entire workflow through code view could remove the *value* portion of existing connection references. This meant actions that had worked in the designer could stop working after a code-view replacement. Eventually, rebuilding the workflow through the Logic App designer proved much more reliable. This was surprising, because I expected the visual/declarative platform to be easier to work with than the code-first approach.
+Overall, Durable Functions gave me more confidence that the workflow was working correctly because I could test and debug the logic directly in my code.
 
 ### Testability
 
