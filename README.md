@@ -61,7 +61,6 @@ Durable Functions has a built-in `task_any()` pattern that can wait for either a
 
 Logic Apps does not have an equivalent built-in human-approval waiting pattern in the same way. To solve the problem, I used an `HttpWebhook` action that pauses the workflow and provides a callback URL. A custom Azure Function then emails the manager and converts their response into a POST request to the webhook.
 
-This solution works and is documented in `DESIGN-NOTES.md`, but it required building an additional component that Durable Functions provided as part of the orchestration model. That represents a meaningful difference in development effort.
 
 ### Observability
 
