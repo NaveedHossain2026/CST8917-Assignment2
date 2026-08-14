@@ -72,6 +72,7 @@ However, Version B was not as stable, so I could not fully use these monitoring 
 
 ### Cost
 
+For the comparison, I assumed the Consumption/serverless tier in Canada Central, around 10 Logic App actions per expense, approximately six Durable Functions executions per run, and a Service Bus Standard tier costing about $10 per month.
 
 At **100 expenses/day** (~3,000/month), Durable Functions would remain almost entirely within the monthly free grant of 1 million executions and 400,000 GB-seconds. Its cost would therefore be close to **$0**, apart from a small amount for storage.
 
