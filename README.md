@@ -95,4 +95,16 @@ I also found Durable Functions easier to develop and debug. Since the workflow w
 
 I would choose Logic Apps when the main goal is connecting different services and creating workflows visually. Its Run History makes it easy to see what happened at each step, and its built-in connectors can reduce the amount of code needed.
 
+## References
+Microsoft Learn. Durable Functions overview. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview
+Microsoft Learn. Human interaction in Durable Functions — external events. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-external-events
+Microsoft Learn. Durable timers. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-timers
+Microsoft Learn. Logic Apps overview. https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-overview
+Microsoft Learn. Service Bus messaging overview. https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview
+
+## AI Disclosure
+
+AI tools, including Claude by Anthropic, were used during this project to help write code, fix errors, draft the comparison analysis and slides, and solve Azure Portal issues, following the assignment’s AI policy. I personally tested and verified all code and rewrote the analysis in my own words based on my experience building both versions
+
+
 Overall, I would choose Durable Functions for this workflow because it provides more control, easier debugging, and better support for manager approval and timeouts. I would choose Logic Apps when visual design, easy service integration, and monitoring are more important than having detailed control over the code.
