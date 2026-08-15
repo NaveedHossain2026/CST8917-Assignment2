@@ -97,11 +97,11 @@ I would choose Logic Apps when the main goal is connecting different services an
 
 ## References
 
-1. Microsoft Learn. Durable Functions overview. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview
-2. Microsoft Learn. Handle external events in durable orchestrations. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-external-events
-3. Microsoft Learn. Implement durable timers for delays and timeouts. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-timers
-4. Microsoft Learn. Logic Apps overview. https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-overview
-5. Microsoft Learn. Service Bus messaging overview. https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview
+1.  Microsoft Learn. Durable Functions overview. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview
+2.  Microsoft Learn. Handle external events in durable orchestrations. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-external-events
+3.  Microsoft Learn. Implement durable timers for delays and timeouts. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-timers
+4.  Microsoft Learn. Logic Apps overview. https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-overview
+5.  Microsoft Learn. Service Bus messaging overview. https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview
 
 ## AI Disclosure
 
