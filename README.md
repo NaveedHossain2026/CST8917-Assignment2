@@ -100,7 +100,7 @@ Microsoft Learn. Durable Functions overview. https://learn.microsoft.com/en-us/a
 
 Microsoft Learn. Handle external events in durable orchestrations. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-external-events
 
-Microsoft Learn. Durable timers. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-timers
+Microsoft Learn. Implement durable timers for delays and timeouts. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-timers
 
 Microsoft Learn. Logic Apps overview. https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-overview
 
