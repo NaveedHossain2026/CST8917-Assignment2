@@ -98,7 +98,7 @@ I would choose Logic Apps when the main goal is connecting different services an
 ## References
 Microsoft Learn. Durable Functions overview. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview
 
-Microsoft Learn. Human interaction in Durable Functions — external events. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-external-events
+Microsoft Learn. Handle external events in durable orchestrations. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-external-events
 
 Microsoft Learn. Durable timers. https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-timers
 
