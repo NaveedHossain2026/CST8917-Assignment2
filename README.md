@@ -105,7 +105,7 @@ I would choose Logic Apps when the main goal is connecting different services an
 
 ## AI Disclosure
 
-AI tools (Claude), were used during this project to help write code, fix errors, draft the comparison analysis and slides, and solve Azure Portal issues, following the assignment’s AI policy. I personally tested and verified all code and rewrote the analysis in my own words based on my experience building both versions
+AI tools (Claude), was used during this project to help write code, fix errors, draft the comparison analysis and slides, and solve Azure Portal issues, following the assignment’s AI policy. I personally tested and verified all code and rewrote the analysis in my own words based on my experience building both versions
 
 
 Overall, I would choose Durable Functions for this workflow because it provides more control, easier debugging, and better support for manager approval and timeouts. I would choose Logic Apps when visual design, easy service integration, and monitoring are more important than having detailed control over the code.
